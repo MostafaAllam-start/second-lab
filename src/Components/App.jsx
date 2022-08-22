@@ -77,42 +77,41 @@ export default class App extends React.Component {
           <Nav/>
           <Switch>
             <Route path="/add" render={props=>(
-              <Add  
-                id={this.state.employees[this.state.employees.length-1].id+1} 
-                addEmployee={this.addEmployeeHandler}
-                {...props}
-              />
-            )} />
-            <Route path="/edit/:id" render={props=>(
-              <Edit 
+                <Add  
+                  id={this.state.employees[this.state.employees.length-1].id+1} 
+                  addEmployee={this.addEmployeeHandler}
+                  {...props}
+                />
+              )} />
+              <Route path="/edit/:id" render={props=>(
+                <Edit 
+                  employees={this.state.employees}
+                  onEdit={this.editHandler}
+                  getEmployees={this.getEmployees}
+                  {...props}
+                />
+              )}/>
+              <Route path="/home" render={props=>(
+                <Home
+                  employees={this.state.employees}
+                  confirmDelete={this.state.confirmDelete}
+                  deleteHandler={this.deleteHandler}
+                  cancelDeleteConfirm={this.cancelDeleteConfirm}
+                  deleteConfirmHandler={this.deleteConfirmHandler}
+                  editHandler={this.editHandler}
+                  changeHandler={this.changeHandler}
+                  allHandler={this.allHandler}
+                  {...props}
+                />
+              )}/>
+            <Route path="/search/:key" render={props=>(
+              <Search 
                 employees={this.state.employees}
-                onEdit={this.editHandler}
-                getEmployees={this.getEmployees}
                 {...props}
               />
             )}/>
-            <Route path="/" render={props=>(
-              <Home
-                employees={this.state.employees}
-                confirmDelete={this.state.confirmDelete}
-                deleteHandler={this.deleteHandler}
-                cancelDeleteConfirm={this.cancelDeleteConfirm}
-                deleteConfirmHandler={this.deleteConfirmHandler}
-                editHandler={this.editHandler}
-                changeHandler={this.changeHandler}
-                allHandler={this.allHandler}
-                {...props}
-              />
-            )}/>
-          <Route path="/search/:key" render={props=>(
-            <Search 
-              employees={this.state.employees}
-              {...props}
-            />
-          )}/>
-          <Route path="/NotFound" component={NotFound}/>
-          <Redirect from="/" to="/home"/>
-          <Redirect to="/NotFound"/>
+            <Route path="/NotFound" component={NotFound}/>
+            <Redirect to="/NotFound"/>  
           </Switch>
         </React.Fragment>
       );
