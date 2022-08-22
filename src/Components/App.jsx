@@ -5,7 +5,6 @@ import Home from "./Home";
 import Edit from "./Edit";
 import Add from "./Add";
 import Nav from './Nav';
-import Search from './Search';
 import NotFound from "./NotFound";
 export default class App extends React.Component {
   constructor() {
@@ -104,12 +103,6 @@ export default class App extends React.Component {
                   {...props}
                 />
               )}/>
-            <Route path="/search/:key" render={props=>(
-              <Search 
-                employees={this.state.employees}
-                {...props}
-              />
-            )}/>
             <Route path="/NotFound" component={NotFound}/>
             <Redirect to="/NotFound"/>  
           </Switch>
