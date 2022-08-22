@@ -54,11 +54,9 @@ export default class App extends React.Component {
     employees[index] = newEmployee;
     //update the employees state
     this.setState({employees});
-    await axios.put(`http://localhost:3000/employees/${newEmployee.id}`, employee);
-    this.getEmployees();
+    await axios.put(`http://localhost:3000/employees/${newEmployee.id}`, newEmployee);
   }
   changeHandler = (e) =>{
-    console.log(e.target.value);
     this.setState({
       [e.target.name] : e.target.value,
     })

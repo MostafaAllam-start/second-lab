@@ -6,7 +6,6 @@ class Search extends Component {
     searchEmployees: this.props.searchEmployees
   }
   render() { 
-      console.log(this.state.searchEmployees);
       return (
           this.state.searchEmployees.length === 0?
               <tr ><td colSpan="7"><h3 className="text-center text-warning">oopps! we can't find such employee.</h3></td></tr> 

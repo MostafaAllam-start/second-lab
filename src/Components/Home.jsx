@@ -16,7 +16,6 @@ class Home extends Component {
     })  
   }
   keyDownHandler = e =>{
-    console.log(this.state.search);
     if(e.key === 'Enter' && this.state.search){
       const searchEmployees = this.props.employees.filter((employee) => Object.values(employee).includes(this.state.search) || Object.values(employee).includes(Number(this.state.search)));
       this.setState({searchEmployee:true, searchEmployees});
@@ -39,7 +38,7 @@ class Home extends Component {
         <div className="d-flex" role="search">
             <input className="form-control me-2" type="text" placeholder="Search" name="search" onChange={this.changeHandler} onKeyDown={this.keyDownHandler}/>
             <button className="btn btn-outline-success" 
-            onClick={() => this.props.history.push('/add')}>Add Employee</button>
+            onClick={() => this.props.history.push('/add')}>Add</button>
         </div>    
         <table className="table">
           <thead>
